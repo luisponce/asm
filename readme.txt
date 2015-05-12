@@ -9,3 +9,6 @@ llamados al sistema
 
 nasm 
      http://leto.net/writing/nasm.php
+
+
+http://stackoverflow.com/questions/1947121/a-good-nasm-fasm-tutorial
