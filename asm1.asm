@@ -21,15 +21,15 @@ _start:				;el 'main'
 
 	mov edx,4		;count = 4   chars a leer
 	mov ecx,input		;buf = *input
-	mov ebx,0		;
-	mov eax,3
-	int 0x80
+	mov ebx,0		;fd = 0 (entrada standar)
+	mov eax,3		;sys_read
+	int 0x80		;llamado al OS
 
-	mov edx,4		;
+	mov edx,4		
 	mov ecx,input		
-	mov ebx,1		;file descriptor (stdout)
-	mov eax,4		;sys_write
+	mov ebx,1		
+	mov eax,4		
 	int 0x80
 	
-	mov eax,1
+	mov eax,1		;exit
 	int 0x80
