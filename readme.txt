@@ -1,6 +1,6 @@
 para compilar 
 
-$ asm -f elf -o <output> <src>
+$ nasm -f elf -o <output> <src>
 $ ld -m elf_i386 -s -o <output> <*.o>
 
 llamados al sistema
