@@ -2,7 +2,10 @@ SECTION .data
 ln:	db "",0xa
 len:	equ $ - ln
 arg:	db "",0
-	
+
+SECTION .bss
+
+
 	
 SECTION .text
 	
@@ -22,10 +25,16 @@ _start:
 .print:	
 	mov edx,ecx		;tamano de lo que escribe
 	mov eax, 4		;escribe primer argumento
-	mov ebx,1 		;fd - out
 	mov ecx,ebx		;write(fd, buf, count)
+	mov ebx,1 		;fd - out
+	int 0x80
+
+	mov eax, 4
+	mov ebx, 1
+	mov ecx,ln
+	mov edx,1
 	int 0x80
 	
-	
 	mov eax,1
+	mov ebx,0
 	int 0x80
