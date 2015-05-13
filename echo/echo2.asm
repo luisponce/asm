@@ -1,10 +1,10 @@
 SECTION .data
 ln:	db "",0xa
 len:	equ $ - ln
-arg:	db "",0
 
 SECTION .bss
 
+arg:	resb 50
 
 	
 SECTION .text
@@ -16,6 +16,7 @@ _start:
 	pop eax			;el llamado al programa - argv[0]
 
 	pop ebx			;el primer argumento - argv[1] 
+	mov [arg], ebx
 	mov ecx, -1		;i=-1
 .while:	
 	inc ecx			;i++
@@ -25,7 +26,7 @@ _start:
 .print:	
 	mov edx,ecx		;tamano de lo que escribe
 	mov eax, 4		;escribe primer argumento
-	mov ecx,ebx		;write(fd, buf, count)
+	mov ecx,[arg]		;write(fd, buf, count)
 	mov ebx,1 		;fd - out
 	int 0x80
 
