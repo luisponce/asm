@@ -23,14 +23,15 @@ _start:				;el 'main'
 	mov edx,50		;count = 50   chars a leer
 	mov ecx,input		;buf = input
 	mov ebx,0		;fd = 0 (entrada standar)
-	mov eax,3		;sys_read()
+	mov eax,3		;sys_read(fd, buf, cont)
 	int 0x80		;llamado al OS
 
-	mov edx,50		
-	mov ecx,input		
-	mov ebx,1		
-	mov eax,4		
-	int 0x80
+	;; escribir lo que tiene en input
+	mov edx,50		;cont = length de input
+	mov ecx,input		;buf = input
+	mov ebx,1		;fd = 1 (stdout)
+	mov eax,4		;sys_write(fd,buf,cont)
+	int 0x80		;kernel
 	
-	mov eax,1		;exit
+	mov eax,1		;sys_exit
 	int 0x80
